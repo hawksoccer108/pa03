@@ -1,0 +1,21 @@
+    void rtinit(int nodename, int[] initial_lkcost) {
+    	// Initialize 2D array and fill it with INFINITY costs
+    	costs = new int[N][N];
+    	for(int i=0; i<costs.length; i++){
+    		for(int j=0; j<costs[i].length; j++){
+    			costs[i][j] = INFINITY;
+    		}
+    	}
+    	
+    	for(int i=0; i<initial_lkcost.length; i++){
+    		costs[i][i]= initial_lkcost[i];
+    	}
+    	
+    	for(int i=0; i<N && i!=nodename; i++){
+    		Packet p = new Packet(nodename, i, initial_lkcost);
+    		NetworkSimulator.tolayer2(p);
+    	}
+    	
+    	//printdt();
+    	//System.out.println("initial cost table filled for Node " + nodename);
+    }
